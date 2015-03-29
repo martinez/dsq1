@@ -1,0 +1,35 @@
+
+softsynth
+- output section: DCA4, PAN, ...
+- find a good VCF model for CEM3379
+  - currently have Paul Kellett's Moog VCF, nearly verbatim from musicdsp
+- patch parameters still not implemented
+  - oscillator sync
+  - the misc section
+  - split and multi-timbral
+- wavetable synth not quite ok yet, needs work
+  - what are wave parameters used for? wave.SEMI, wave.FINE
+- implement the missing MIDI mod sources
+- respond to pitchbend messages, CC, and SysEx
+- adjust all rate values everywhere
+- fixed point math (maybe... for speed and lo-fi effect)
+  - see util/math/fp.d initial implementation
+- VST plugin for the other platforms
+...
+
+gui
+- everything
+
+------
+
+problems (D compiler)
+- gdc frontend fails because too old
+- ldc compilation error with stack trace and no info
+  - related to using tkd, it's all I know
+  - before using tkd, it was impossible to compile unless in release mode (same kind of error)
+- dmd requires linking with libsamplerate, even if never used (GPL library only used in testing)
+  - does not accept pragma lib, others do
+  - forced linking in dub.json
+
+problem (D build)
+- cannot choose which compiler in DUB, need to install the desired compiler and remove others

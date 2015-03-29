@@ -1,0 +1,124 @@
+{
+	 "version": "1.0.0",
+	 "description": "Software synthesizer and tools for the Ensoniq SQ-80 family.",
+	 "copyright": "Copyright © 2015, JP",
+	 "authors": ["JP"],
+
+	 "name": "esq",
+	 "targetName": "esq",
+	 "targetType": "none",
+	 "dependencies": {
+	 	  "esq:synthlib": "~>1.0.0",
+	 	  "esq:synthui": "~>1.0.0",
+	 	  "esq:jack": "~>1.0.0",
+	 	  "esq:banker": "~>1.0.0",
+	 },
+
+	 "subPackages": [
+		  {
+				"name": "lo",
+				"targetName": "lo",
+				"targetType": "library",
+				"sourcePaths": ["source/liblo"],
+				"importPaths": ["source/liblo"],
+				"libs": ["lo"],
+				"dependencies": {
+				},
+		  },
+
+		  {
+				"name": "util",
+				"targetName": "util",
+				"targetType": "sourceLibrary",
+				"sourcePaths": ["source/util"],
+				"importPaths": ["source/util"],
+				"libs": ["samplerate"],
+				"dependencies": {
+				},
+		  },
+
+		  {
+				"name": "fptest",
+				"targetName": "fptest",
+				"targetType": "executable",
+				"sourcePaths": ["source/fptest"],
+				"importPaths": ["source/fptest"],
+				"dependencies": {
+	 				 "esq:util": "~>1.0.0",
+				},
+		  },
+
+		  {
+				"name": "esqtest",
+				"targetName": "esqtest",
+				"targetType": "executable",
+				"sourcePaths": ["source/esqtest"],
+				"importPaths": ["source/esqtest"],
+				"dependencies": {
+	 				 "esq:synth": "~>1.0.0",
+				},
+		  },
+
+		  {
+				"name": "synthlib",
+				"targetName": "esq",
+				"targetType": "library",
+				"sourcePaths": ["source/synthlib"],
+				"importPaths": ["source/synthlib"],
+				"stringImportPaths": ["source/synthlib/strings"],
+				"dependencies": {
+	 				 "jsonizer": "~>0.1.0",
+				},
+		  },
+
+	 	  {
+				"name": "jack",
+				"targetName": "esq-jack",
+				"targetType": "executable",
+				"sourcePaths": ["source/jack"],
+				"importPaths": ["source/jack"],
+				"dependencies": {
+	 				 "esq:synth": "~>1.0.0",
+	 				 "esq:lo": "~>1.0.0",
+	 				 "jack": "~>1.0.1",
+				},
+	 	  },
+
+	 	  {
+				"name": "synth",
+				"targetName": "esq-synth",
+				"targetType": "sourceLibrary",
+				"sourcePaths": ["source/synth"],
+				"importPaths": ["source/synth"],
+				"dependencies": {
+	 				 "esq:synthlib": "~>1.0.0",
+	 				 "esq:util": "~>1.0.0",
+				},
+	 	  },
+
+	 	  {
+				"name": "synthui",
+				"targetName": "esq-synthui",
+				"targetType": "executable",
+				"sourcePaths": ["source/synthui"],
+				"importPaths": ["source/synthui"],
+				"dependencies": {
+	 				 "esq:util": "~>1.0.0",
+	 				 "esq:lo": "~>1.0.0",
+					 "tkd": "~>1.1.3",
+				},
+	 	  },
+
+	 	  {
+				"name": "banker",
+				"targetName": "esq-banker",
+				"targetType": "executable",
+				"sourcePaths": ["source/banker"],
+				"importPaths": ["source/banker"],
+				"dependencies": {
+	 				 "esq:synthlib": "~>1.0.0",
+					 "tkd": "~>1.1.3",
+				},
+	 	  },
+	 ],
+}
